@@ -13,6 +13,7 @@ class ArticlesAdapter : RecyclerView.Adapter<ArticlesAdapter.ArticleViewHolder>(
 
     private val articles : MutableList<Article> = mutableListOf()
 
+
     fun setData(articles :List<Article>){
         this.articles.clear()
         this.articles.addAll(articles)
