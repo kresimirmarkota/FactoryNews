@@ -18,19 +18,13 @@ import retrofit2.Response
 class MainActivity : AppCompatActivity(), MainContract.View {
     private lateinit var presenter : MainContract.Presenter
     private val newsAdapter=ArticlesAdapter()
-    val sharedpref = getSharedPreferences("savedSharedPreferences", MODE_PRIVATE)
-    val editor = sharedpref.edit()
-
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         presenter= MainPresenter(this)
         presenter.fetchArticles()
-        editor.apply(){
 
-        }
         newsRecyclerView.layoutManager = LinearLayoutManager(this)
         newsRecyclerView.adapter=newsAdapter
 

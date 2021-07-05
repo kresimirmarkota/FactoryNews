@@ -12,15 +12,12 @@ import retrofit2.Response
 class MainPresenter (private val view : MainContract.View) : MainContract.Presenter{
     private val newsApi= ApiServiceProvider.provideNewsApi()
 
-
    override fun fetchArticles(){
-       //dodati if i u tom ifu povuci podatke iz lokalne prohrane i provjeriti je li trenutni timestamp veći od 5 min
         newsApi.fetchArticles().enqueue(object : Callback<ArticlesResponse> {
             override fun onResponse(call: Call<ArticlesResponse>, response: Response<ArticlesResponse>) {
                 response.body()?.articles?.let {
                     view.setArticles(it) }
             }
-
             override fun onFailure(call: Call<ArticlesResponse>, t: Throwable) {
                view.showError(t.message.toString())
 
